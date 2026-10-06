@@ -1,0 +1,831 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f7f7f5;
+  color: #111;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.app {
+  min-height: 100vh;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  height: 72px;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 7%;
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-size: 21px;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+}
+
+.logo-star {
+  font-size: 22px;
+}
+
+.navbar nav {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+
+  font-size: 15px;
+  color: #111;
+
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  opacity: 0.6;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  background: #151515;
+  color: white;
+
+  min-height: 560px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 80px 7%;
+}
+
+.hero-content {
+  max-width: 900px;
+}
+
+.eyebrow,
+.section-label,
+.ai-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+
+.eyebrow {
+  color: #999;
+  margin-bottom: 28px;
+}
+
+.hero h1 {
+  font-size: clamp(58px, 7vw, 92px);
+  line-height: 0.96;
+  letter-spacing: -4px;
+
+  margin: 0;
+}
+
+.hero h1 span {
+  color: #888;
+}
+
+.hero-description {
+  margin-top: 38px;
+
+  max-width: 700px;
+
+  font-size: 18px;
+  line-height: 1.7;
+
+  color: #d0d0d0;
+}
+
+.hero-actions {
+  margin-top: 32px;
+}
+
+.hero-button {
+  background: white;
+  color: #111;
+
+  border: none;
+  border-radius: 9px;
+
+  padding: 14px 21px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.hero-button:hover {
+  background: #ddd;
+}
+
+/* =========================
+   ISSUES
+========================= */
+
+.issues-section {
+  padding: 90px 7%;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 45px;
+}
+
+.section-label {
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.section-header h2 {
+  margin: 0;
+
+  font-size: 38px;
+  letter-spacing: -1.5px;
+}
+
+.section-subtitle {
+  color: #777;
+
+  margin-top: 12px;
+
+  font-size: 15px;
+}
+
+.refresh-btn {
+  background: white;
+
+  border: 1px solid #ddd;
+  border-radius: 10px;
+
+  padding: 13px 22px;
+
+  cursor: pointer;
+  font-size: 14px;
+
+  white-space: nowrap;
+}
+
+.refresh-btn:hover {
+  background: #f1f1f1;
+}
+
+.refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* =========================
+   ISSUE GRID
+========================= */
+
+.issues-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 25px;
+}
+
+.issue-card {
+  background: white;
+
+  border: 1px solid #e1e1e1;
+  border-radius: 18px;
+
+  padding: 28px;
+
+  min-height: 350px;
+
+  display: flex;
+  flex-direction: column;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.issue-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.08);
+}
+
+.issue-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.issue-number {
+  color: #888;
+  font-size: 14px;
+}
+
+.heart-btn {
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 25px;
+  line-height: 1;
+
+  color: #aaa;
+
+  padding: 2px;
+}
+
+.heart-btn:hover,
+.heart-btn.active {
+  color: #111;
+}
+
+.issue-card h3 {
+  font-size: 22px;
+  line-height: 1.3;
+
+  margin: 25px 0 8px;
+
+  letter-spacing: -0.4px;
+}
+
+.repository,
+.detail-repository {
+  color: #777;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.issue-description {
+  color: #555;
+
+  line-height: 1.6;
+  font-size: 14px;
+
+  flex-grow: 1;
+
+  margin-top: 22px;
+}
+
+.labels {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin: 15px 0;
+}
+
+.label {
+  background: #f0f0f0;
+
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  color: #555;
+}
+
+.view-issue-btn {
+  align-self: flex-start;
+
+  background: #111;
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  padding: 11px 16px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.view-issue-btn:hover {
+  background: #333;
+}
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+  min-height: 300px;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  color: #777;
+}
+
+.loading-spinner {
+  width: 32px;
+  height: 32px;
+
+  border: 3px solid #ddd;
+  border-top-color: #111;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+
+  margin-bottom: 18px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================
+   EMPTY / ERROR
+========================= */
+
+.empty-state {
+  background: white;
+
+  border: 1px solid #e1e1e1;
+  border-radius: 18px;
+
+  padding: 70px 30px;
+
+  text-align: center;
+}
+
+.empty-icon {
+  font-size: 32px;
+}
+
+.empty-state h3 {
+  margin-bottom: 5px;
+}
+
+.empty-state p {
+  color: #777;
+}
+
+.error-box {
+  background: #fff0f0;
+
+  border: 1px solid #f0bcbc;
+
+  color: #a33;
+
+  padding: 18px;
+
+  border-radius: 10px;
+
+  margin: 20px 0;
+}
+
+/* =========================
+   DETAIL PAGE
+========================= */
+
+.detail-page {
+  padding: 65px 7%;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+
+  padding: 0;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  margin-bottom: 30px;
+
+  color: #333;
+}
+
+.back-btn:hover {
+  text-decoration: underline;
+}
+
+.detail-card {
+  max-width: 900px;
+
+  margin: auto;
+
+  background: white;
+
+  border: 1px solid #e1e1e1;
+  border-radius: 20px;
+
+  padding: 60px;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+.detail-header h1 {
+  font-size: 42px;
+  line-height: 1.1;
+
+  letter-spacing: -1.5px;
+
+  margin: 15px 0;
+}
+
+.heart-large {
+  background: none;
+  border: none;
+
+  cursor: pointer;
+
+  font-size: 30px;
+
+  color: #aaa;
+
+  height: fit-content;
+}
+
+.heart-large:hover,
+.heart-large.active {
+  color: #111;
+}
+
+.detail-labels {
+  margin: 25px 0 40px;
+}
+
+.issue-body {
+  border-top: 1px solid #e5e5e5;
+
+  padding-top: 35px;
+}
+
+.issue-body h2 {
+  font-size: 24px;
+}
+
+.body-text {
+  line-height: 1.8;
+
+  color: #444;
+
+  font-size: 16px;
+}
+
+.body-text p {
+  margin: 0 0 18px;
+}
+
+.body-text h1,
+.body-text h2,
+.body-text h3 {
+  color: #111;
+
+  margin-top: 28px;
+}
+
+.body-text code,
+.guidance-content code {
+  background: #f1f1f1;
+
+  padding: 3px 6px;
+
+  border-radius: 5px;
+
+  font-family: monospace;
+}
+
+.body-text pre,
+.guidance-content pre {
+  background: #151515;
+
+  color: white;
+
+  padding: 20px;
+
+  border-radius: 10px;
+
+  overflow-x: auto;
+}
+
+/* =========================
+   GITHUB BUTTON
+========================= */
+
+.github-main-btn {
+  display: inline-block;
+
+  margin-top: 30px;
+
+  background: #111;
+  color: white;
+
+  text-decoration: none;
+
+  padding: 14px 20px;
+
+  border-radius: 9px;
+
+  font-weight: 600;
+}
+
+.github-main-btn:hover {
+  background: #333;
+}
+
+/* =========================
+   AI BOX
+========================= */
+
+.ai-box {
+  margin-top: 45px;
+
+  background: #151515;
+  color: white;
+
+  border-radius: 18px;
+
+  padding: 35px;
+}
+
+.ai-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 10px;
+
+  background: white;
+  color: #111;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+
+  margin-bottom: 20px;
+}
+
+.ai-label {
+  color: #aaa;
+
+  margin-bottom: 10px;
+}
+
+.ai-box h2 {
+  font-size: 27px;
+
+  margin: 0 0 12px;
+}
+
+.ai-box p:not(.ai-label) {
+  color: #ccc;
+
+  line-height: 1.7;
+
+  max-width: 700px;
+}
+
+.ai-button {
+  margin-top: 15px;
+
+  background: white;
+  color: #111;
+
+  border: none;
+
+  border-radius: 9px;
+
+  padding: 14px 20px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.ai-button:hover {
+  background: #ddd;
+}
+
+.ai-button:disabled {
+  opacity: 0.6;
+
+  cursor: wait;
+}
+
+/* =========================
+   GUIDANCE
+========================= */
+
+.guidance-section {
+  margin-top: 55px;
+}
+
+.guidance-section > h2 {
+  font-size: 34px;
+
+  margin-top: 5px;
+
+  margin-bottom: 30px;
+}
+
+.guidance-content {
+  border-top: 1px solid #e5e5e5;
+
+  padding-top: 30px;
+
+  color: #444;
+
+  line-height: 1.75;
+}
+
+.guidance-content h1,
+.guidance-content h2,
+.guidance-content h3 {
+  color: #111;
+
+  margin-top: 30px;
+  margin-bottom: 12px;
+}
+
+.guidance-content h2 {
+  font-size: 20px;
+}
+
+.guidance-content h3 {
+  font-size: 17px;
+}
+
+.guidance-content p {
+  margin: 10px 0 18px;
+}
+
+.guidance-content li {
+  margin-bottom: 10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  border-top: 1px solid #ddd;
+
+  padding: 35px 7%;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: #777;
+
+  font-size: 14px;
+
+  background: #f7f7f5;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+  .navbar {
+    padding: 0 6%;
+  }
+
+  .hero {
+    min-height: 500px;
+
+    padding: 60px 6%;
+  }
+
+  .hero h1 {
+    font-size: 55px;
+
+    letter-spacing: -2px;
+  }
+
+  .issues-section {
+    padding: 65px 6%;
+  }
+
+  .issues-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-header {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    gap: 20px;
+  }
+
+  .detail-page {
+    padding: 45px 6%;
+  }
+
+  .detail-card {
+    padding: 28px;
+  }
+
+  .detail-header h1 {
+    font-size: 32px;
+  }
+
+  .footer {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+}
+
+@media (max-width: 500px) {
+
+  .navbar {
+    height: 64px;
+  }
+
+  .navbar nav {
+    gap: 12px;
+  }
+
+  .hero h1 {
+    font-size: 46px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .detail-header {
+    flex-direction: column;
+  }
+
+  .detail-header h1 {
+    font-size: 29px;
+  }
+
+  .ai-box {
+    padding: 25px;
+  }
+}
